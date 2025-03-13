@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import Appbar from "@/components/custom/Appbar"
 import { useState } from "react"
 import {
@@ -151,10 +152,12 @@ export default function Shipper() {
         <div className="mb-8">
           <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
           <div className="flex flex-wrap gap-3">
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              <Package className="h-4 w-4 mr-2" />
-              Post New Job
-            </Button>
+            <Link href='/dashboard/job'>
+              <Button className="bg-blue-600 hover:bg-blue-700">
+                <Package className="h-4 w-4 mr-2" />
+                Post New Job
+              </Button>
+            </Link>
             <Button variant="outline">
               <Truck className="h-4 w-4 mr-2" />
               Track Shipments

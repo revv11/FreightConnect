@@ -19,6 +19,12 @@ enum UserRole {
   SHIPPER
 }
 
+
+enum Status{
+  PENDING
+  ACTIVE
+  DELIVERED
+}
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
@@ -49,5 +55,19 @@ model ShipperProfile {
   user      User   @relation(fields: [userId], references: [id])
   companyName String?
   companyType String?
+  jobs Job[]
+}
+
+
+model Job{
+  id String @id @default(uuid())
+  shipperId String
+  shipper ShipperProfile @relation(fields: [shipperId], references: [userId])
+  price Int
+  weight Int
+  from String
+  to  String
+  status Status @default(PENDING) 
+  distance Int
 }
 
