@@ -2,6 +2,7 @@
 import Shipper from "./Shipper"
 import { useSession } from "next-auth/react"
 import { useUserContext } from "../context/UserContext"
+import Trucker from "./Trucker"
 export default function Page(){
     const {currentUser} = useUserContext()
     
@@ -12,11 +13,9 @@ export default function Page(){
         )
 
     }
-    else{
+    else if(currentUser.role === "TRUCKER"){
         return(
-            <div>
-                
-            </div>
+            <Trucker/>
         )
     }
 }

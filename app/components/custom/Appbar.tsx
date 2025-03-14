@@ -1,5 +1,5 @@
 "use client"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useSession } from "next-auth/react"
 import { useUserContext } from "@/app/context/UserContext"
@@ -11,17 +11,20 @@ import {
   } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-
+import Link from "next/link"
 export default function Appbar(){
     const session  = useSession()
+
     const {currentUser}= useUserContext()
    
     return(
         <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <TruckIcon className="h-6 w-6 text-blue-600" />
-          <span className="font-bold text-xl text-blue-600">FreightConnect</span>
-        </div>
+          <Link href='/dashboard'>
+            <div className="flex items-center space-x-2">
+              <TruckIcon className="h-6 w-6 text-blue-600" />
+              <span className="font-bold text-xl text-blue-600">FreightConnect</span>
+            </div>
+          </Link>
         <div className="flex items-center space-x-4">
           <TooltipProvider>
             <Tooltip>
@@ -41,8 +44,8 @@ export default function Appbar(){
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center space-x-2">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={session.data?.user.image} alt="FastFreight Inc." />
-                  <AvatarFallback>FF</AvatarFallback>
+                  <AvatarImage src={session.data?.user?.image} alt="" />
+                  
                 </Avatar>
                 <div className="flex flex-col items-start text-sm">
                   <span className="font-medium">{currentUser.name}</span>

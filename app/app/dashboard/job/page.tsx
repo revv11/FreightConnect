@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
 import { Calculator, Home, Info, MapPin, Package, Route, Settings, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,6 +12,8 @@ import Appbar from "@/components/custom/Appbar"
 import Script from "next/script"
 import axios from "axios"
 import { useSession } from "next-auth/react"
+import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 // Define Google Maps related types
 declare global {
@@ -23,7 +24,9 @@ declare global {
 }
 
 export default function PostJobPage() {
-    const session = useSession()
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const session = useSession()
   const [jobData, setJobData] = useState({
     price: "",
     weight: "",
@@ -34,12 +37,25 @@ export default function PostJobPage() {
   const submit = async (e:any)=>{
     e.preventDefault();
     try{
-        await axios.post('/api/job', {shipperId: session.data?.user.id,price: Number(jobData.price), weight: Number(jobData.weight), distance: Number(jobData.distance), to: jobData.toLocation, from: jobData.fromLocation})
-        alert("success")
+        setLoading(true)
+        await axios.post('/api/job', 
+          {
+            shipperId: session.data?.user.id,
+            price: Number(jobData.price), 
+            weight: Number(jobData.weight), 
+            distance: Number(jobData.distance), 
+            to: jobData.toLocation, 
+            from: jobData.fromLocation
+          })
+        toast.success("Job Added Successfully")
+        setLoading(false)
+        router.push('/dashboard')
     }
-    catch(e){
-        alert(e)
-        console.log(e)
+    catch(e:any){
+        
+      console.log(e)
+      toast.error(e.response.data.message)
+      setLoading(false)
     }
   }
   const [summary, setSummary] = useState({
@@ -319,7 +335,7 @@ export default function PostJobPage() {
                       <Button 
                         onClick={submit}
                         className="bg-blue-600 hover:bg-blue-700"
-                        disabled={!jobData.price || !jobData.weight || !jobData.fromLocation || !jobData.toLocation || !jobData.distance}
+                        disabled={!jobData.price || !jobData.weight || !jobData.fromLocation || !jobData.toLocation || !jobData.distance || loading}
                       >
                         Post Job
                       </Button>

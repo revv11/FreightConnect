@@ -36,7 +36,7 @@ export const UserContextProvider = ({children}: {children: ReactNode})=>{
     const session   = useSession()
     const user = session.data?.user;
     
-    
+    const [loading , setLoading] = useState(true)
     const [submitdata, setSubmitData] = useState(true)
     const [currentUser, setCurrentUser] = useState<any>({id:Number(user?.id) })
     useEffect(()=>{
@@ -49,7 +49,7 @@ export const UserContextProvider = ({children}: {children: ReactNode})=>{
                
             
                 setCurrentUser({id:data?.id, name: data?.name, role: data?.role, truckerProfile: data?.truckerProfile, shipperProfile: data?.shipperProfile})
-              
+                setLoading(false)
             }
             setuser();
             
@@ -57,7 +57,7 @@ export const UserContextProvider = ({children}: {children: ReactNode})=>{
     },[session.data?.user, setSubmitData, submitdata])
 
     return(
-        <UserContext.Provider value= {{currentUser,setSubmitData}}>
+        <UserContext.Provider value= {{currentUser,setSubmitData, loading}}>
             {children}
         </UserContext.Provider>
     )

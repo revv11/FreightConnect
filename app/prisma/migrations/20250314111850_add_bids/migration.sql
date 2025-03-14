@@ -1,0 +1,16 @@
+-- CreateTable
+CREATE TABLE "Bid" (
+    "id" TEXT NOT NULL,
+    "amount" DOUBLE PRECISION NOT NULL,
+    "jobId" TEXT NOT NULL,
+    "truckerId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Bid_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "Bid" ADD CONSTRAINT "Bid_jobId_fkey" FOREIGN KEY ("jobId") REFERENCES "Job"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Bid" ADD CONSTRAINT "Bid_truckerId_fkey" FOREIGN KEY ("truckerId") REFERENCES "TruckerProfile"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;

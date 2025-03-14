@@ -48,6 +48,8 @@ model TruckerProfile {
   maxDistance Int?
   hasAccidentHistory Boolean @default(false)
   hasTheftHistory Boolean @default(false)
+  bids     Bid[]
+  job Job?
 }
 
 model ShipperProfile {
@@ -63,11 +65,25 @@ model Job{
   id String @id @default(uuid())
   shipperId String
   shipper ShipperProfile @relation(fields: [shipperId], references: [userId])
-  price Int
+  price Float
   weight Int
   from String
   to  String
   status Status @default(PENDING) 
   distance Int
+  createdAt DateTime? @default(now())
+  bids Bid[]
+  truckerId String? @unique
+  trucker TruckerProfile? @relation(fields: [truckerId], references: [userId])
+  finalAmount Float?
 }
 
+model Bid{
+  id        String  @id @default(uuid())
+  amount    Float
+  job       Job     @relation(fields: [jobId], references: [id])
+  jobId     String
+  truckerId String
+  trucker   TruckerProfile @relation(fields: [truckerId], references: [userId])
+  createdAt DateTime @default(now())
+}
