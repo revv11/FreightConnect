@@ -37,7 +37,7 @@ FreightConnect is a web application that connects shippers and truckers, allowin
    NEXT_PUBLIC_WEBSOCKET_SERVER=websocketurl(eg. http://localhost:5000)
    ```
    To generate GOMAPS API KEY follow this video: https://www.youtube.com/watch?v=e1efOSDKdFM
-   To generate Google Oauth Client ID and Client Secret follow this video:  
+   To generate Google Oauth Client ID and Client Secret follow this video: https://www.youtube.com/watch?v=XQbiMiNah0o&t=790s (from 13:10)
 
 4. **Install dependencies**
    * Inside the `app` folder:
