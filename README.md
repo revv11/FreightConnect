@@ -28,16 +28,18 @@ FreightConnect is a web application that connects shippers and truckers, allowin
    * Create a `.env` file in the `app` and `websocket` folders by copying `.env.example`
    * Add the required values:
    ```
-   DATABASE_URL=your_database_url
-   NEXTAUTH_SECRET=your_nextauth_secret
-   GOOGLE_CLIENT_ID=your_google_client_id
-   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   DATABASE_URL=your_database_url(postgres database connection string)
+   NEXTAUTH_SECRET=your_nextauth_secret(random string)
+   GOOGLE_CLIENT_ID=your_google_oauth_client_id
+   GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
    NEXT_PUBLIC_MAPSAPI=gomapsapikey
    WEBSOCKET_URL=websocketurl(eg. http://localhost:5000)
    NEXT_PUBLIC_WEBSOCKET_SERVER=websocketurl(eg. http://localhost:5000)
    ```
+   To generate GOMAPS API KEY follow this video: https://www.youtube.com/watch?v=e1efOSDKdFM
+   To generate Google Oauth Client ID and Client Secret follow this video:  
 
-3. **Install dependencies**
+4. **Install dependencies**
    * Inside the `app` folder:
    ```sh
    cd app
@@ -49,13 +51,13 @@ FreightConnect is a web application that connects shippers and truckers, allowin
    npm install
    ```
 
-4. **Run database migrations**
+5. **Run database migrations**
    ```sh
    cd app
    npx prisma migrate dev
    ```
 
-5. **Start the application**
+6. **Start the application**
    * Run the Next.js app:
    ```sh
    cd app
