@@ -88,3 +88,8 @@ FreightConnect is a web application that connects shippers and truckers, allowin
 * **Important alerts for shippers**
 * **Financial Management**
 * **Benefits for Truckers**
+
+##AI Tools Used
+* **Motiff AI**: Used for generating the design
+* **v0.dev**: Used to convert design to frontend code
+* **Claude & ChatGPT**: Used for troubleshooting.
