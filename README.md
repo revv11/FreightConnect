@@ -4,7 +4,7 @@ FreightConnect is a web application that connects shippers and truckers, allowin
 1. **Frontend & API** (Next.js)
 2. **WebSocket Server** (Express.js & Socket.io)
 
-## 🚀 Project Setup
+##  Project Setup
 
 ### **Prerequisites**
 - Node.js (>= 18.x)
@@ -63,7 +63,7 @@ FreightConnect is a web application that connects shippers and truckers, allowin
    npm run dev
    ```
 
-## 📁 Project Structure
+##  Project Structure
 ```
 ├── app/                # Next.js frontend and backend API
 ├── websocket/          # WebSocket server (Express.js + Socket.io)
@@ -71,7 +71,7 @@ FreightConnect is a web application that connects shippers and truckers, allowin
 ├── README.md           # Project documentation
 ```
 
-## ⚡ Features
+##  Features
 * **Authentication**: Google OAuth using `next-auth`
 * **Job Posting**: Shippers can create jobs with pickup and delivery locations
 * **Bidding System**: Truckers can place multiple bids for a job
