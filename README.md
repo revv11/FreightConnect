@@ -28,6 +28,9 @@ FreightConnect is a web application that connects shippers and truckers, allowin
    NEXTAUTH_SECRET=your_nextauth_secret
    GOOGLE_CLIENT_ID=your_google_client_id
    GOOGLE_CLIENT_SECRET=your_google_client_secret
+   NEXT_PUBLIC_MAPSAPI=gomapsapikey
+   WEBSOCKET_URL=websocketurl(eg. http://localhost:5000)
+   NEXT_PUBLIC_WEBSOCKET_SERVER=websocketurl(eg. http://localhost:5000)
    ```
 
 3. **Install dependencies**
