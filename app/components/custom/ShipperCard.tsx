@@ -1,6 +1,4 @@
 import Link from "next/link"
-import Appbar from "@/components/custom/Appbar"
-import { useState } from "react"
 import {
   Edit,
   Eye,
@@ -61,12 +59,9 @@ export default function ShipperCard({job}: {job:any}){
                         </div>
                         
                         <div className="flex justify-between pt-2">
-                          <Button variant="ghost" size="sm" className="text-blue-600">
-                            <Edit className="h-4 w-4 mr-1" />
-                            Edit Job
-                          </Button>
-                          <Link href={`/dashboard/job/${job.id}`}>
-                            <Button variant="ghost" size="sm" className="text-blue-600">
+                          
+                          <Link  href={`/dashboard/job/${job.id}`}>
+                            <Button variant="ghost" size="sm" className="text-blue-600 cursor-pointer">
                                 <Eye className="h-4 w-4 mr-1" />
                                 View Details
                             </Button>

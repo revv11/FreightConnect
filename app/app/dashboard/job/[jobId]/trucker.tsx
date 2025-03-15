@@ -2,18 +2,13 @@
 
 
 import Link from "next/link"
-import Image from "next/image"
+import RouteMap from "@/components/custom/RouteMap"
 import {  Calendar,  MapPin,  Scale, Truck } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import BidList from "@/components/custom/BidList"
 import Appbar from "@/components/custom/Appbar"
 
 export default function TruckerJob({jobId, details}: {jobId: string, details: any}) {
-    
-  
-    
-    
-
   
 
   return (
@@ -66,13 +61,12 @@ export default function TruckerJob({jobId, details}: {jobId: string, details: an
                 
 
                 {/* Map Placeholder */}
-                <div className="aspect-[16/9] bg-gray-100 rounded-lg mb-6">
-                  <Image
-                    src="/placeholder.svg"
-                    alt="Route map"
-                    width={800}
-                    height={450}
-                    className="w-full h-full object-cover rounded-lg"
+                <div className="aspect-[16/9] mb-6">
+                  <RouteMap 
+                    fromLocation={details.from}
+                    toLocation={details.to}
+                    height="100%"
+                    className="w-full h-full rounded-lg shadow-sm"
                   />
                 </div>
 

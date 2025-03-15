@@ -41,7 +41,7 @@ export async function GET(req: NextRequest){
         
         const { searchParams } = new URL(req.url);
         const jobId = searchParams.get("jobId");
-        console.log("jobIdddddddddddddddddd",jobId)
+        
         
         
         const   jobs = await db.job.findUnique({

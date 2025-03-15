@@ -49,6 +49,7 @@ model TruckerProfile {
   hasAccidentHistory Boolean @default(false)
   hasTheftHistory Boolean @default(false)
   bids     Bid[]
+  activejob String?
   job Job?
 }
 

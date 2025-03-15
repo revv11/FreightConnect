@@ -17,7 +17,7 @@ export async function POST(req:NextRequest){
           if (!job) {
             return NextResponse.json({ error: "Job not found or unauthorized" }, { status: 404 });
           }
-    
+          
           // 2️ Get the lowest bid amount for the given jobId
           const lowestBid = await tx.bid.findFirst({
             where: { jobId },
@@ -31,7 +31,19 @@ export async function POST(req:NextRequest){
     
           // 3️⃣Delete all bids for this job
           await tx.bid.deleteMany({ where: { jobId } });
+
+          const trucker = await tx.truckerProfile.findUnique({
+            where: { userId: lowestBid.truckerId },
+            select: { job: true },
+          });
     
+          if (trucker?.job) {
+            return NextResponse.json({ error: "Trucker already has an assigned job" }, { status: 400 });
+          }
+          await tx.truckerProfile.update({
+            where: { userId: lowestBid.truckerId },
+            data: { activejob: jobId },
+          });
           // 4️ Update the Job table
           const updatedJob = await tx.job.update({
             where: { id: jobId },
