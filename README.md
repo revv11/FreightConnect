@@ -8,9 +8,13 @@ FreightConnect is a web application that connects shippers and truckers, allowin
 
 ### **Prerequisites**
 - Node.js (>= 18.x)
+- Next.js (>14)
 - PostgreSQL (for database)
 - Prisma (for ORM)
-- A Google OAuth app (for authentication)
+- Google OAuth using next-auth (for authentication)
+- Socket.io
+- Shadcn
+- Tailwind
 
 ### **Installation**
 
@@ -77,4 +81,10 @@ FreightConnect is a web application that connects shippers and truckers, allowin
 * **Bidding System**: Truckers can place multiple bids for a job
 * **Live Bidding Updates**: Real-time updates using WebSockets
 * **Job Assignment**: The lowest bid trucker wins the job
-* **Interactive Map**: Displays the route between pickup and delivery locations
+* **Interactive Map**: Displays the route between pickup and delivery locations (Partially completed)
+
+##  Incomplete Features 
+* **Load Tracking**: Real-time tracking of loads
+* **Important alerts for shippers**
+* **Financial Management**
+* **Benefits for Truckers**
